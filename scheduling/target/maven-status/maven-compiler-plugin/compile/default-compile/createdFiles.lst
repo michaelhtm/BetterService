@@ -1,0 +1,4 @@
+com/example/scheduling/SchedulingApplication.class
+com/example/scheduling/AppointmentRepository.class
+com/example/scheduling/Appointment.class
+com/example/scheduling/SchedulingController.class
