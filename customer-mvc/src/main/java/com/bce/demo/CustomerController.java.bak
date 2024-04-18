@@ -1,0 +1,41 @@
+package com.bce.demo;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class CustomerController {
+  // @Autowired
+  // GreetingService srvc;
+  @Autowired
+  CustomerRepository customerRepo;
+
+  @GetMapping("/login")
+  public String loginForm(Model model) {
+    // this lets you refer to the object using "${loginInfo}" in thymeleaf html
+    model.addAttribute("loginInfo", new LoginInfo());
+    return "login"; // serves login.html, or generally retval.html
+  }
+
+  // how does it know to pass the LoginInfo?
+  @PostMapping("/login")
+  public String loginSubmit(@ModelAttribute LoginInfo loginInfo, Model model) {
+    // what does this accomplish after a POST?
+    model.addAttribute("loginInfo", loginInfo);
+
+    System.out.println(loginInfo.toString());
+    if(customerRepo.existsByName(loginInfo.getName())) {
+      Customer c = customerRepo.findByName(loginInfo.getName());
+      model.addAttribute("customer", c);
+      //return "home/"+c.getId();
+      return "home";
+    }
+    else {
+      return "login"; // silently return to login page
+    }
+  }
+}

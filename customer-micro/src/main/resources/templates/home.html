@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Hello <span th:text=${customer.name} /></h1>
+    // should be url to scheduling (on a different port) and will include param with customer name (or whatever info is needed)
+    // Thymeleaf @{...}?
+    // Or /custid
+    <p><a href="/make-appt">Make an appointment</a></p>
+    <p><a href="/appts">Your appointments</a></p>
+    <p><a href="/edit">Change your personal info</a></p>
+</body>
+
+</html>
