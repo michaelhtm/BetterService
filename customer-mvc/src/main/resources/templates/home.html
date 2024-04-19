@@ -2,18 +2,22 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-    <title>Login</title>
+    <title>Home</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
-    <h1>Hello <span th:text=${customer.name} /></h1>
-    // should be url to scheduling (on a different port) and will include param with customer name (or whatever info is needed)
-    // Thymeleaf @{...}?
-    // Or /custid
-    <p><a href="/make-appt">Make an appointment</a></p>
-    <p><a href="/appts">Your appointments</a></p>
-    <p><a href="/edit">Change your personal info</a></p>
+    <h1>Hello <span th:text=${name} /></h1>
+    <p><a href="http://localhost:8080/scheduling">Make an appointment</a></p>
+    <!-- example: /2/appts -->
+    <p><a th:href="@{/{id}/appts(id=${id})}">See your appointments</a></p>
+    <h2>Change your name</h2>
+    <!-- contrast with greeting example: -->
+    <!-- https://stackoverflow.com/questions/41467779/how-to-pass-only-string-in-thymeleaf-form -->
+    <form action="#" th:action="@{/post-name}" method="post">
+        <p>New name: <input type="text" name="newName" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
 </body>
 
 </html>

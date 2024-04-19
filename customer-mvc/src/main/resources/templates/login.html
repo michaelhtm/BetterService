@@ -8,8 +8,8 @@
 
 <body>
     <h1>Login</h1>
-    <form action="#" th:action="@{/login}" th:object="${loginInfo}" method="post">
-        <p>Name: <input type="text" th:field="*{name}" /></p>
+    <form action="#" th:action="@{/}" method="post">
+        <p>ID number: <input type="text" name="enteredId"/></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 </body>

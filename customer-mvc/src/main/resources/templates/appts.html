@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Appointments</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Your appointments<span th:text=${name} /></h1>
+    <p><a th:href="@{/{id}/home(id=${id})}">Back to home</a></p>
+</body>
+
+</html>

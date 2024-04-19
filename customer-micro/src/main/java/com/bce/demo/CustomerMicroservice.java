@@ -17,7 +17,7 @@ public class CustomerMicroservice {
 		SpringApplication app = new SpringApplication(CustomerMicroservice.class);
 		// Change port in code (Editiing application.properties did nothing)
 		// https://www.baeldung.com/spring-boot-change-port
-		app.setDefaultProperties(Collections.singletonMap("server.port", "8081"));
+		app.setDefaultProperties(Collections.singletonMap("server.port", "8083"));
 		app.run(args);
 		//SpringApplication.run(CustomerMicroservice.class, args);
 	}
