@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>BetterService Scheduling</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <header>
+            <p><a href="scheduling">home</a></p>
+        </header>
+        <h1>Edit Appointmnet</h1>
+        <form action="#" th:action="@{/editAppointment}" th:object="${appointment}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" th:field="*{customerId}" />
+            
+            <p>Employee ID: <input type="text" th:field="*{employeeId}" required/></p>
+            <p>Date: <input type="date" th:field="*{date}" required/></p>
+            <p>Time: <input type="time" th:field="*{time}" required/></p>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+    </body>
+</html>
