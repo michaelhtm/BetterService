@@ -2,6 +2,7 @@ package com.bce.demo;
 
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import javax.websocket.server.PathParam;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class CustomerRestController {
@@ -61,5 +65,17 @@ public class CustomerRestController {
       cust.setName(name);
       customerRepo.save(cust);
     }
+  }
+
+  /* for testing calls to scheduling microservice. TODO remove */
+  @GetMapping("/sched")
+  public String getDummyAppts(@RequestParam int id) throws JsonProcessingException {
+    String appt1 = new String("2:00 Barber A "+ customerRepo.findById(id).get().getName());
+    String appt2 = new String("2:30 Barber B "+ customerRepo.findById(id).get().getName());
+    ArrayList<String> list = new ArrayList<String>();
+    list.add(appt1);
+    list.add(appt2);
+    ObjectMapper mapper = new ObjectMapper();
+    return mapper.writeValueAsString(list);
   }
 }
