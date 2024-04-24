@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Details</title>
+</head>
+<body>
+    <h1>Employee Details</h1>
+    <p>Name: <span th:text="${employee.name}"></span></p>
+    <p>Bio: <span th:text="${employee.bio}"></span></p>
+    
+    <form action="#" th:action="@{/create}" th:object="${employee}" method="post">
+        <input type="hidden" name="name" th:field="*{name}" />
+        <p>Bio: <input type="text" name="bio" th:field="*{bio}" /></p>
+        <p><input type="submit" value="Update Employee"/></p>
+    </form>
+    <a href="/initial">Back to Employee Welcome</a>
+</body>
+</html>
+

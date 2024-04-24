@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Welcome Page</title>
+</head>
+<body>
+    <h1>Employee Welcome Page</h1>
+    <form action="#" th:action="@{/initial}" method="post">
+        <p>Employee Name: <input type="text" name="employeeName" placehoder="Enter Employee Name"/></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
+    <p> <a href="/create">Create New Employee</a> </p>
+</body>
+</html>
+
+
