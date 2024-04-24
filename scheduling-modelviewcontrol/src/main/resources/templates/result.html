@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
+    <title>BetterService Scheduling</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
     <header>
         <p><a href="scheduling">home</a></p>
     </header>
-	<h1>Result</h1>
+	<h1 style="color:green">Succeded</h1>
     <p th:text="'Customer ID: ' + ${appointment.customerId}" />
-    <p th:text="'Employee ID: ' + ${appointment.employeeId}" />
+    <p th:text="'Employee Name: ' + ${appointment.employeeName}" />
     <p th:text="'Date: ' + ${appointment.date}" />
     <p th:text="'Time: ' + ${appointment.time}" />
     <p><a href="/scheduling">Make another appointment</a></p>

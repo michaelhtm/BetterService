@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
+    <title>BetterService Scheduling</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
         td {text-align:center}
@@ -15,7 +15,7 @@
     <table border="1">
         <thead>
             <tr>
-                <th>Employee ID</th>
+                <th>Employee Name</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Action</th>
@@ -23,7 +23,7 @@
         </thead>
         <tbody>
             <tr th:each="appointment : ${appointments}">
-                <td th:text="${appointment.employeeId}" />
+                <td th:text="${appointment.employeeName}" />
                 <td th:text="${appointment.date}" />
                 <td th:text="${appointment.time}" />
                 <td>

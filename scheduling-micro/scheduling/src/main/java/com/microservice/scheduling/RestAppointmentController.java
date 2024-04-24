@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,11 @@ public class RestAppointmentController {
 
 	@Autowired
 	RestAppointmentRepository repository;
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	private static final String MICROURL = "https://localhost:8884";
 
 	private final AtomicLong counter = new AtomicLong();
 
@@ -38,6 +44,11 @@ public class RestAppointmentController {
 		try{
 			if(appointment.getId() == null)
 				appointment.setId(counter.incrementAndGet());
+			
+			// Boolean employeeExists = restTemplate.getForObject(MICROURL+"employeeExists?employeeName="+appointment.getEmployeeId(), Boolean.class);
+			// if (employeeExists)
+				
+			// else return "No";
 			repository.save(appointment);
 			return "Yes";
 		}catch(Exception e){

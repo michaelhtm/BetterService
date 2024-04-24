@@ -2,21 +2,23 @@ package com.mvc.scheduling;
 
 import lombok.Getter;
 import lombok.Setter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter @Setter
 public class Appointment {
 
 	private Long id;
 	private String customerId;
-	private String employeeId;
-    private String date;
-    private String time;
+	private String employeeName;
+    private LocalDate date;
+    private LocalTime time;
 
 	protected Appointment() {}
 
-	public Appointment(String cId, String eId, String d, String t) {
+	public Appointment(String cId, String eId, LocalDate d, LocalTime t) {
 		this.customerId = cId;
-		this.employeeId = eId;
+		this.employeeName = eId;
         this.date = d;
         time = t;
 	}
@@ -24,7 +26,7 @@ public class Appointment {
 	@Override
 	public String toString() {
 		return String.format(
-				"Appointment[id=%d, customerId='%s', employeeId='%s', date='%s', time='%s']",
-				id, customerId, employeeId, date, time);
+				"Appointment[id=%d, customerId='%s', employeeName='%s', date='%s', time='%s']",
+				id, customerId, employeeName, date, time);
 	}
 }

@@ -19,6 +19,7 @@ public class AppointmentService {
         try{
             return restTemplate.postForObject(MICROURL+"saveAppointment", appointment, String.class).strip();
         }catch(Exception e) {
+            SchedulingApplication.log.info("Error encountered at saveAppointment");
             return null;
         }
         
@@ -32,6 +33,7 @@ public class AppointmentService {
                 Appointment[].class);
             return Arrays.asList(appointments);
         }catch(Exception e) {
+            SchedulingApplication.log.info("Error encountered at getAppointmentFor custoemr");
             return null;
         }
     }
@@ -43,6 +45,7 @@ public class AppointmentService {
                 Appointment.class
             );
         }catch(Exception e) {
+            SchedulingApplication.log.info("Error encountered at getAppointment");
             return null;
         }
     }
