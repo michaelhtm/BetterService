@@ -66,16 +66,4 @@ public class CustomerRestController {
       customerRepo.save(cust);
     }
   }
-
-  /* for testing calls to scheduling microservice. TODO remove */
-  @GetMapping("/sched")
-  public String getDummyAppts(@RequestParam int id) throws JsonProcessingException {
-    String appt1 = new String("2:00 Barber A "+ customerRepo.findById(id).get().getName());
-    String appt2 = new String("2:30 Barber B "+ customerRepo.findById(id).get().getName());
-    ArrayList<String> list = new ArrayList<String>();
-    list.add(appt1);
-    list.add(appt2);
-    ObjectMapper mapper = new ObjectMapper();
-    return mapper.writeValueAsString(list);
-  }
 }

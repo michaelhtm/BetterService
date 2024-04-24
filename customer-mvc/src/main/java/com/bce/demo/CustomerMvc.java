@@ -35,40 +35,40 @@ public class CustomerMvc {
 	// https://www.baeldung.com/rest-template
 	ObjectMapper mapper = new ObjectMapper();
 
-	@Bean
-	public CommandLineRunner init() {
-		return (args) -> {
-			/* MICROSERVICE TESTS */
+	// @Bean
+	// public CommandLineRunner init() {
+	// 	return (args) -> {
+	// 		/* MICROSERVICE TESTS */
 
-			// reusable references
-			ResponseEntity<String> response;
-			JsonNode json;
+	// 		// reusable references
+	// 		ResponseEntity<String> response;
+	// 		JsonNode json;
 
-			// add a customer (simple test of POST to microservice)
-			// Object.class works, but String.class would be required if assigning to response declared above
-			micro.postForEntity(microUrl+"/add?id=4&name=New+customer", null, Object.class);
+	// 		// add a customer (simple test of POST to microservice)
+	// 		// Object.class works, but String.class would be required if assigning to response declared above
+	// 		micro.postForEntity(microUrl+"/add?id=4&name=New+customer", null, Object.class);
 
-			// 1-3 already exist
-			// 4 should give the new customer
-			// 5 should give JSON indicating not found
-			for (int i = 1; i <= 5; i++) {
-				response = micro.getForEntity(microUrl+"/customers?id="+i, String.class);
-				json = mapper.readTree(response.getBody());
-				log.info(json.path("name").asText());
-			}
+	// 		// 1-3 already exist
+	// 		// 4 should give the new customer
+	// 		// 5 should give JSON indicating not found
+	// 		for (int i = 1; i <= 5; i++) {
+	// 			response = micro.getForEntity(microUrl+"/customers?id="+i, String.class);
+	// 			json = mapper.readTree(response.getBody());
+	// 			log.info(json.path("name").asText());
+	// 		}
 
-			// find by name
-			response = micro.getForEntity(microUrl+"/customers?name=New+customer", String.class);
-			json = mapper.readTree(response.getBody());
-			log.info(json.toString());
+	// 		// find by name
+	// 		response = micro.getForEntity(microUrl+"/customers?name=New+customer", String.class);
+	// 		json = mapper.readTree(response.getBody());
+	// 		log.info(json.toString());
 
-			// change name
-			micro.postForEntity(microUrl+"/change-name?id=4&name=Renamed+customer", null, String.class);
-			// did it change?
-			//TimeUnit.SECONDS.sleep(1);
-			response = micro.getForEntity(microUrl + "/customers?id=4", String.class);
-			json = mapper.readTree(response.getBody());
-			log.info(json.toString());
-		};
-	}
+	// 		// change name
+	// 		micro.postForEntity(microUrl+"/change-name?id=4&name=Renamed+customer", null, String.class);
+	// 		// did it change?
+	// 		//TimeUnit.SECONDS.sleep(1);
+	// 		response = micro.getForEntity(microUrl + "/customers?id=4", String.class);
+	// 		json = mapper.readTree(response.getBody());
+	// 		log.info(json.toString());
+	// 	};
+	// }
 }

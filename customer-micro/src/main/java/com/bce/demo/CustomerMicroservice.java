@@ -25,6 +25,7 @@ public class CustomerMicroservice {
 	@Bean
 	public CommandLineRunner init(CustomerRepository customerRepo) {
 		return (args) -> {
+			// initialize with default customers
 			customerRepo.save(new Customer(1, "Rapunzel"));
 			customerRepo.save(new Customer(2, "Sierva"));
 			customerRepo.save(new Customer(3, "Yona"));

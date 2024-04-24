@@ -26,7 +26,7 @@ public class CustomerController {
 
   RestTemplate micro = new RestTemplate();
   String microUrl = "http://localhost:8083";
-  String schedulingMicroUrl = "http://localhost:8081";
+  String schedulingMicroUrl = "http://localhost:8011";
   // for handling responses
   ResponseEntity<String> response;
 	ObjectMapper mapper = new ObjectMapper();
@@ -38,7 +38,7 @@ public class CustomerController {
    * Might remove later
    */
   @GetMapping("/")
-  public String login(Model model) {
+  public String getLogin(Model model) {
     return "login";
   }
 
@@ -93,10 +93,9 @@ public class CustomerController {
   }
 
   @GetMapping("/{id}/appts")
-  public String showAppts(@PathVariable int id, Model model) throws JsonMappingException, JsonProcessingException {
-    //response = micro.getForEntity(schedulingMicroUrl+"?id="+id, String.class);
-    // simulate using customer microservice for now
-    response = micro.getForEntity(microUrl+"/sched/?id="+id, String.class);
+  public String getAppts(@PathVariable int id, Model model) throws JsonMappingException, JsonProcessingException {
+    // call scheduling microservice
+    response = micro.getForEntity(schedulingMicroUrl+"/viewAllAppointments?customerId="+model.getAttribute("id"), String.class);
     json = mapper.readTree(response.getBody());
     model.addAttribute("appts", json);
     return "appts";
