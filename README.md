@@ -2,8 +2,17 @@
 
 ### Hardcoded ports
 
+#### Customer
 Customer MVC: 8082  
 Customer Microservice: 8083  
+
+#### Scheduling
+MVC: 8010
+Microservice: 8011
+
+#### Employee
+MVC: 8884
+Microservice: 8882
 
 ### JDK versions
 
