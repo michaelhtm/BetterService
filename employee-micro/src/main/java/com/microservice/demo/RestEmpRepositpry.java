@@ -3,7 +3,7 @@ package com.microservice.demo;
 import org.springframework.data.repository.CrudRepository;
 
 public interface RestEmpRepositpry extends 
-	CrudRepository<RestEmployee, Long> {
+	CrudRepository<RestEmployee, String> {
 
 		  RestEmployee findByName(String name);
 
