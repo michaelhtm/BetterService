@@ -41,8 +41,10 @@ public class RestEmpController {
 
     /** microservice called by employee */
     @GetMapping("/employeeExists")
-    public boolean employeeExists(@RequestParam String employeeName){
-        return empository.existsByName(employeeName);
+    public String employeeExists(@RequestParam String employeeName){
+        if(empository.existsByName(employeeName)) {
+            return "Yes";
+        }return "No";
     }
     
     // /** microservice calling customer does customer exist*/

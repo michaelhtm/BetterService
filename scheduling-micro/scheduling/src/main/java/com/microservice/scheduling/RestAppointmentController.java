@@ -21,7 +21,7 @@ public class RestAppointmentController {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	private static final String MICROURL = "https://localhost:8884";
+	private static final String MICROURL = "http://localhost:8884/";
 
 	private final AtomicLong counter = new AtomicLong();
 
@@ -45,13 +45,13 @@ public class RestAppointmentController {
 			if(appointment.getId() == null)
 				appointment.setId(counter.incrementAndGet());
 			
-			// Boolean employeeExists = restTemplate.getForObject(MICROURL+"employeeExists?employeeName="+appointment.getEmployeeId(), Boolean.class);
-			// if (employeeExists)
-				
-			// else return "No";
-			repository.save(appointment);
+			String employeeExists = restTemplate.getForObject(MICROURL+"employeeExists?employeeName="+appointment.getEmployeeName(), String.class);
+			if (employeeExists.equals("Yes"))
+				repository.save(appointment);
+			else { RestSchedulingApplication.log.info("I cant find him");return "No"; }
 			return "Yes";
 		}catch(Exception e){
+			RestSchedulingApplication.log.info("it don't work");
 			return "No";
 		}
 	}
